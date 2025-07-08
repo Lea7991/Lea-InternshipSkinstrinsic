@@ -1,37 +1,41 @@
 import React from 'react'
+import '../Demographics/Demographics.css'
 
 const Demographics = () => {
+
   return (
-    <div>
+    <div className='page__demo'>
       <div className="container">
         <div className="header__wrapper">
-          <div className="header__title">A.I. ANALYSIS</div>
-          <h1 className='header__title'>DEMOGRAPHICS</h1>
+          <div className="header__title--top">A.I. ANALYSIS</div>
+          <h1 className='header__title--demo'>DEMOGRAPHICS</h1>
             <p className='header__para'>A.I. HAS ESTIMATED THE FOLLOWING. <br />FIX ESTIMATED INFORMATION IF NEEDED. 
             </p>
         </div>
 
         <div className="container__wrapper--left">
-          <div className="container__one">
+          <button className="container__one">
             <div className="text__results">EAST ASIAN</div>
-            <div className="text__race">RACE</div>
-          </div>
-          <div className="container__two">
+            <div className="text__bottom">RACE</div>
+          </button>
+          <button className="container__two">
             <div className="text__results">20-29</div>
-            <div className="text__age">AGE</div>
-          </div>
-          <div className="container__three">
+            <div className="text__bottom">AGE</div>
+          </button>
+          <button className="container__three">
             <div className="text__results">FEMALE</div>
-            <div className="text__sex">SEX</div>
-          </div>
+            <div className="text__bottom">SEX</div>
+          </button>
         </div>
 
         <div className="container__wrapper--middle">
           <div className="result__text">East Asian</div>
           <div className="circle__wrapper">
-            <div className="circle">
-              <div className="percentage">96%</div>
-            </div>
+            <svg className="circle" viewBox="0 0 100 100">
+              <circle className="bg" cx="50" cy="50" r="45" />
+              <circle className="progress" cx="50" cy="50" r="45" />
+            </svg>
+            <text x="50" y="50" className="percentage-text">96%</text>
           </div>
         </div>
 
@@ -39,6 +43,7 @@ const Demographics = () => {
           <div className="header__results--wrapper">
             <div className="left__title">RACE</div>
             <div className="right__title">A.I. CONFIDENCE</div>
+            </div>
             <div className="main__results--wrapper">
               <ul className='results__list'>
                 <li className="result__wrapper">
@@ -71,13 +76,15 @@ const Demographics = () => {
                 </li>
               </ul>
             </div>
-          </div>
         </div>
-        <div className="button__wrapper">
+      </div>
+      <div className='middle__text--wrapper'>
+        <div className="middle__text">If A.I. estimate is wrong, select the correct one</div>
+      </div>
+      <div className="button__wrapper">
           <button className="reset">RESET</button>
           <button className="confirm">CONFIRM</button>
         </div>
-      </div>
     </div>
   )
 }
