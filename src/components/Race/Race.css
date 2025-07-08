@@ -1,111 +1,10 @@
-.page__demo {
-  width: 100%;
-    max-width: 1280px;
-    height: 800px;
-    padding: 0 80px 40px 20px;  
-    box-sizing: border-box;
-    position: relative;
-}
-
-.container {
-    width: 100%;
+.race__layout {
     display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 2rem;
 }
-
-.header__wrapper {
-  position: absolute;
-  top: 20px; 
-  left: 20px;
-  height: 100px;
-  width: calc(100% - 40px); 
-  box-sizing: border-box;
-}
-
-.header__title--top {
-    font-size: 12px;
-    padding-left: 3px;
-}
-
-.header__title--demo{
-    font-size: 55px;
-    line-height: 40px;
-    font-weight: 300;
-    padding-top: 8px;
-}
-
-.header__para {
-    font-size: 12px;
-    padding-left: 3px;
-}
-
-
-/* LEFT PAGE */
-
-.main__results--wrapper {
-  position: relative;
-  display: flex;
-  letter-spacing: -6%;
-}
-
-.container__wrapper--left,
-.container__wrapper--middle,
-.container__wrapper--right {
-  position: absolute;
-  top: 200px; 
-  height: 510px; 
-  border-top: 1px solid black;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  
-}
-
-.container__wrapper--left {
-  top: 180px;
-  left: 20px;
-  width: 200px;
-}
-
-.container__one,
-.container__two,
-.container__three {
-    border: none;
-    border-top: 1px solid black;
-    height: 104px;
-    width: 200px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-color: rgb(232, 230, 230);
-}
-
-.container__one {
-    border: none;
-}
-
-.container__one:hover,
-.container__two:hover,
-.container__three:hover {
-    background-color: black;
-    color: white;
-    
-}
-
-.text__results {
-    padding-left: 12px;
-    padding-top: 12px;
-}
-
-.text__bottom{
-    padding-left: 12px;
-    padding-bottom: 12px;
-}
-
-
-/* MIDDLE PAGE */
 
 .container__wrapper--middle {
   left: 240px; 
@@ -231,13 +130,13 @@
     bottom: 40px;
     left: 550px;
     font-size: 12px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     color: rgb(176, 175, 175);
 }
 
 .button__wrapper {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   left: 1110px;
   display: flex;
   gap: 16px;
