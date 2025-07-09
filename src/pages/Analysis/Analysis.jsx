@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import '../Analysis/Analysis.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +12,7 @@ const Analysis = () => {
   const [showModal, setShowModal] = useState(false)
   const [showModalGallery, setShowModalGallery] = useState(false)
   const [loading, setLoading] = useState(false)
+  const fileInputRef = useRef(null);
 
   function handleCamera() {
     setShowModal(true)
@@ -28,11 +29,22 @@ const Analysis = () => {
     setTimeout(() => {
       console.log('Camera is ready!')
       setLoading(false)
-    }, 7000)
+      navigate('/Camera')
+    }, 5000)
   }
 
   function handleGalleryAllow() {
-    setShowModalGallery(false)
+    setShowModalGallery(false);
+    if(fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  }
+
+  function handleFileChange(event) {
+    const file = event.targe.files[0];
+    if (file) {
+      console.log('Selected file:', file)
+    }
   }
 
   function handleDeny() {
@@ -47,6 +59,14 @@ const Analysis = () => {
 
   return (
     <>
+
+    <input
+        type="file"
+        accept="image/*"
+        style={{ display: 'none' }}
+        ref={fileInputRef}
+        onChange={handleFileChange}
+      />
 
     {loading && (
       <div className="skeleton__overlay">

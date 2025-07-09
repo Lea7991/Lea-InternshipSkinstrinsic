@@ -5,10 +5,9 @@ import '../Sex/Sex.css'
 const Sex = () => {
   return (
     <div>
-        <div className='page__demo'>
-            <div className="container">
+        
         <div className="container__wrapper--middle">
-          <div className="result__text">20-29 y.o.</div>
+          <div className="result__text">FEMALE</div>
           <div className="circle__wrapper">
             <svg className="circle" viewBox="0 0 100 100">
               <circle className="bg" cx="50" cy="50" r="45" />
@@ -36,8 +35,6 @@ const Sex = () => {
               </ul>
             </div>
         </div>
-      </div>
-    </div>
     </div>
   )
 }

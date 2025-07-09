@@ -1,43 +1,19 @@
 .page__demo {
   width: 100%;
-    max-width: 1280px;
+    max-width: 1920px;
     height: 800px;
-    padding: 0 80px 40px 20px;  
+    padding: 0 20px 20px 20px;  
     box-sizing: border-box;
     position: relative;
 }
 
 .container {
     width: 100%;
-    display: flex;
+    height: 90vh;
+    position: relative; 
 }
 
-.header__wrapper {
-  position: absolute;
-  top: 20px; 
-  left: 20px;
-  height: 100px;
-  padding-top: 20px;
-  width: calc(100% - 40px); 
-  box-sizing: border-box;
-}
 
-.header__title--top {
-    font-size: 12px;
-    padding-left: 3px;
-}
-
-.header__title--demo{
-    font-size: 55px;
-    line-height: 40px;
-    font-weight: 300;
-    padding-top: 8px;
-}
-
-.header__para {
-    font-size: 12px;
-    padding-left: 3px;
-}
 
 
 /* LEFT PAGE */

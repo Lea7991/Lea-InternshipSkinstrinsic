@@ -5,6 +5,7 @@ import Intro from "./pages/Intro/Intro";
 import Analysis from "./pages/Analysis/Analysis";
 import Demographics from "./pages/Demographics/Demographics";
 import Results from "./pages/Results/Results";
+import Camera from "./pages/Camera/Camera";
 
 
 
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/Intro" element={<Intro />} />
             <Route path="/Analysis" element={<Analysis />} />
+            <Route path="/Camera" element={<Camera />} />
             <Route path="/Results" element={<Results />} />
             <Route path="/Demographics" element={<Demographics />} />
         </Routes>

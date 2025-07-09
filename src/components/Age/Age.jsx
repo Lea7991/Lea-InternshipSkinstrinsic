@@ -4,8 +4,7 @@ import '../../pages/Demographics/Demographics.css'
 const Age = () => {
   return (
     <div>
-         <div className='page__demo'>
-        <div className="container">
+         
             <div className="container__wrapper--middle">
             <div className="result__text">20-29 y.o.</div>
             <div className="circle__wrapper">
@@ -59,8 +58,7 @@ const Age = () => {
                 </ul>
                 </div>
             </div>
-        </div>
-        </div>
+       
     </div>
   )
 }

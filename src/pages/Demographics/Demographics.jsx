@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import '../Demographics/Demographics.css'
 import Race from '../../components/Race/Race'
 import Age from '../../components/Age/Age'
 import Sex from '../../components/Sex/Sex'
+import '../Demographics/Demographics.css'
 
 
 const Demographics = () => {
   const [component, setComponent] = useState('race')
 
-  const renderComponenet = () => {
+
+  const renderComponent = () => {
     if (component === 'race') return <Race />;
     if (component === 'age') return <Age />;
     if (component === 'sex') return <Sex />;
@@ -25,26 +26,29 @@ const Demographics = () => {
               </p>
           </div>
           <div className="container__wrapper--left">
-          <button className="container__one"
-          onClick={() => setComponent('race')}
+          <button
+            className={`container__one ${component === 'race' ? 'selected' : ''}`}
+            onClick={() => setComponent('race')}
           >
               <div className="text__results">EAST ASIAN</div>
               <div className="text__bottom">RACE</div>
           </button>
-          <button className="container__two"
-          onClick={() => setComponent('age')}
+          <button
+            className={`container__two ${component === 'age' ? 'selected' : ''}`}
+            onClick={() => setComponent('age')}
           >
               <div className="text__results">20-29</div>
               <div className="text__bottom">AGE</div>
           </button>
-          <button className="container__three"
-          onClick={() => setComponent('sex')}
+          <button
+            className={`container__three ${component === 'sex' ? 'selected' : ''}`}
+            onClick={() => setComponent('sex')}
           >
               <div className="text__results">FEMALE</div>
               <div className="text__bottom">SEX</div>
           </button>
           </div>
-            {renderComponenet()}
+            {renderComponent()}
             <div className='middle__text--wrapper'>
               <div className="middle__text">If A.I. estimate is wrong, select the correct one</div>
             </div>

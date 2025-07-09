@@ -4,8 +4,7 @@ import '../../pages/Demographics/Demographics.css'
 const Race = () => {
   return (
     <div>
-        <div className='page__demo'>
-      <div className="container">
+        
         <div className="container__wrapper--middle">
           <div className="result__text">East Asian</div>
           <div className="circle__wrapper">
@@ -55,8 +54,6 @@ const Race = () => {
               </ul>
             </div>
         </div>
-      </div>
-    </div>
     </div>
   )
 }
