@@ -17,7 +17,7 @@
 .intro__wrapper {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,6 +101,7 @@
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 8px;
+    color: #A0A4AB;
 }
 
 .intro__input {
@@ -116,10 +117,7 @@
 }
 
 
-.input__title {
-    font-size: 10px;
-    color: #A0A4AB;
-}
+
 
     
 .intro__input::placeholder{
@@ -143,9 +141,9 @@
 .rectangle__small {
   width: 24px;
   height: 24px;
-  border: 1px solid black;
+  border: 1px solid black !important;
   background-color: white;
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
   transition: transform 1.2s ease-in-out;
@@ -157,21 +155,26 @@
 
 
 .icon {
-  font-size: 14px;
+  color: black !important;
+  font-size: 14px !important;
+  display: inline-block !important;
 }
 
 .text__small {
-  font-size: 14px;
+  color: black !important;
+  font-size: 14px !important;
+  display: block !important;
 }
 
 .button__wrapper--right {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 8px;
   cursor: pointer;
   background-color: white;
   border: none;
 }
+

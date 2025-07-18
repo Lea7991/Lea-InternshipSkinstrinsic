@@ -1,36 +1,67 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../Intro/Intro.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 
 const Intro = () => {
 const navigate = useNavigate();
 const [inputValue, setInputValue] = useState('');
 const [placeholder, setPlaceholder] = useState('Introduce Yourself');
-const [showProceed, setShowProceed] = useState(false)
+const [showProceed, setShowProceed] = useState(false);
+const [name, setName] = useState('');
+const [location, setLocation] = useState('');
+
 
   function handleClick() {
     navigate(`/`)
   }
 
-  function handleInput (e) {
-    const value = e.target.value;
-    setInputValue(value)
+  function handleInput(e) {
+  const value = e.target.value;
+  setInputValue(value);
+
+  if (placeholder === 'Your city name' && value.trim().length > 0) {
+    setShowProceed(true);
+  } else if (placeholder === 'Your city name' && value.trim().length === 0) {
+    setShowProceed(false);
   }
+}
 
   function handleKeyDown(e) {
   if (e.key === 'Enter' && inputValue.trim() !== '') {
     if (placeholder === 'Introduce Yourself') {
-      setPlaceholder('your city name');
+      setName(inputValue.trim())
+      setPlaceholder('Your city name');
       setInputValue('');
       setShowProceed(true);
     } else {
-      navigate('/Analysis');
+      const enteredLocation = inputValue.trim();
+      setLocation(enteredLocation);
+      setInputValue('');
+
+      if(name && enteredLocation) {
+        navigate('/Analysis')
+      }
     }
   }
 }
+
+useEffect(() => {
+  if ( name && location ) {
+    axios.post(`https://us-central1-frontend-simplified.cloudfunctions.net/skinstricPhaseOne`, {
+      name,
+      location
+    })
+    .then(response => {
+      console.log('Submission successful', response.data);
+    })
+    .catch(error => {
+      console.error('Error submitting data:', error)
+    });
+  }
+}, [name, location])
 
   return (
     <div className='page'>
@@ -63,11 +94,24 @@ const [showProceed, setShowProceed] = useState(false)
             <div className="text__small">BACK</div>
         </button>
         {showProceed && (
-            <button className="button__wrapper--right" onClick={() => navigate('/Analysis')} >
-            <div className="rectangle__small">
-                <FontAwesomeIcon icon={faCaretRight} className='icon'/>
-            </div>
-            <div className="text__small">PROCEED</div>
+        <button
+          className="button__wrapper--right"
+          onClick={() => {
+            const trimmedLocation = inputValue.trim();
+
+            if (!name || !trimmedLocation) {
+              alert("Failed: name and location required");
+              return; // stop navigation
+            }
+
+            setLocation(trimmedLocation);
+            navigate('/Analysis');
+          }}
+            >
+          <div className="rectangle__small">
+              <FontAwesomeIcon icon={faCaretRight} className='icon'/>
+          </div>
+          <div className="text__small">PROCEED</div>
         </button>
         )}
     </div>

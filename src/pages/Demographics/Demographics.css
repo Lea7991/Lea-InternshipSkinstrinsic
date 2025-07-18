@@ -1,6 +1,9 @@
 .page__demo {
-  width: 100%;
-    max-width: 1920px;
+    padding-top: 0;
+    padding-bottom: 20px;
+    width: 100%;
+    max-width: 1366px;
+    min-height: 768px;
     padding: 0 20px 20px 20px;  
     box-sizing: border-box;
     position: relative;
