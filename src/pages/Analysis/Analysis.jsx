@@ -5,6 +5,7 @@ import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import camera from '../../assets/camera-icon.webp'
 import gallery from '../../assets/gallery-icon.webp'
 import { Navigate, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const Analysis = () => {
@@ -40,13 +41,6 @@ const Analysis = () => {
     }
   }
 
-  function handleFileChange(event) {
-    const file = event.targe.files[0];
-    if (file) {
-      console.log('Selected file:', file)
-    }
-  }
-
   function handleDeny() {
     setShowModal(false)
     setShowModalGallery(false)
@@ -56,6 +50,49 @@ const Analysis = () => {
     navigate('/Intro')
   }
 
+  function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+}
+ 
+  async function handleFileChange(event) {
+    const file = event.targe.files[0];
+    if (!file) return;
+
+      console.log('Selected file:', file);
+
+    try {
+      setLoading(true);
+
+      const base64 = await convertToBase64(file);
+      console.log('Base64 image', base64);
+
+      const response = await axios.post(`https://us-central1-frontend-simplified.cloudfunctions.net/skinstricPhaseTwo`,
+        { image: base64 },
+        { headers: {
+          'Content-type' : 'application/json' ,
+            }
+          }
+        )
+
+        console.log('API response:' , response.data);
+
+        navigate('/Resuts');
+
+    }  catch(err) {
+      console.log('Error uploading image:', err);
+      alert('Something went wrong. Please try again.')
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  
 
   return (
     <>

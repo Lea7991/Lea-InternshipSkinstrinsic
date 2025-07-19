@@ -1,10 +1,15 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../Camera/Camera.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretLeft, faCamera } from '@fortawesome/free-solid-svg-icons';
 
 const Camera = () => {
     const videoRef = useRef(null)
+    const canvasRef = useRef(null)
+    const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         const startCamera = async () => {
@@ -26,19 +31,56 @@ const Camera = () => {
                 tracks.forEach(track => track.stop())
             }
             }
-    }, [])
+    }, []);
+
+    const captureAndUploadPhoto = async () => {
+      if(!videoRef.current || !canvasRef.current) return; 
+
+      const video = videoRef.current;
+      const canvas = canvasRef.current;
+      const context = canvas.getContext('2d');
+
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight; 
+
+      context.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+      const base64 = canvas.toDataURL('image/jpeg');
+
+      try {
+        setLoading(true);
+        const response = await axios.post (
+          `https://us-central1-frontend-simplified.cloudfunctions.net/skinstricPhaseTwo`,
+          { image: base64 } ,
+          { headers: {
+            'Content-Type' : 'application/json'
+          }}    
+        );
+
+        console.log('Camera API response:', response.data);
+        navigate('/Results')
+      } catch(err) {
+        console.error('Camera upload failed', err)
+        alert('Failed to upload image. Please try again.')
+      } finally {
+        setLoading(false);
+      }
+    }
 
 
 
   return (
     <div className='page'>
+      {loading && <div className="loading-overlay">Uploading...</div>}
+
       <video ref={videoRef} autoPlay playsInline className="camera-video" />
+      <canvas ref={canvasRef} style={{ display: 'none' }} />
 
       <div className="overlay">
         <div className="container">
           <div className="camera__container">
             <div className="camera__text">TAKE PICTURE</div>
-            <div className="camera__icon--wrapper">
+            <div className="camera__icon--wrapper" onClick={captureAndUploadPhoto}>
               <FontAwesomeIcon icon={faCamera} className='camera__icon' />
             </div>
           </div>
