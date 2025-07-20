@@ -1,6 +1,6 @@
 .nav{
     width: 100%;
-    max-width: 1920px;
+    max-width: 1366px;
     height: 64px;
     display: flex;
     justify-content: space-between;
@@ -41,4 +41,11 @@
     height: 36px;
     margin-top: 16px;
     cursor: not-allowed;
+}
+
+@media (max-width: 1920px) {
+    .nav {
+        max-width: 1920px;
+        width: 100%;
+    }
 }

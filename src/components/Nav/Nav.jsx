@@ -1,7 +1,13 @@
 import React from 'react'
 import '../Nav/Nav.css'
+import { useLocation } from 'react-router-dom'
 
 const Nav = () => {
+  const location = useLocation();
+  const path = location.pathname;
+
+  const showButton = path === "/" || path === "/Intro";
+
   return (
     <div>
       <div className="nav">
@@ -10,7 +16,7 @@ const Nav = () => {
           <div className='nav__intro'>[ INTRO ]</div>
         </div>
         <div className="nav__right">
-          <button className='button__right'>ENTER CODE</button>
+         {showButton && <button className='button__right'>ENTER CODE</button>} 
         </div>
       </div>
     </div>

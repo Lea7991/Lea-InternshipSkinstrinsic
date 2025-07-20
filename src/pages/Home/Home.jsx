@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Home.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -6,12 +6,24 @@ import {  useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
+  const [showButton, setShowButton] = useState(window.innerWidth <= 960);
   const [hovered, setHovered] = useState(null);
   const navigate = useNavigate()
 
   function handleClick() {
     navigate(`/Intro`)
   }
+
+  useEffect(() => {
+  const handleResize = () => {
+    setShowButton(window.innerWidth <= 960);
+  };
+
+  handleResize(); 
+
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
 
 
   return (
@@ -36,6 +48,14 @@ const Home = () => {
       <p className='text'>
         SKINTRINSIC DEVELOPED AN A.I. THAT CREATES A HIGHLY-PERSONALISED ROUTINE TAILORED TO WHAT YOUR SKIN NEEDS.
       </p>
+      {showButton && (
+        <div className="button__middle" onClick={handleClick}>
+          <button className="text__small--middle">ENTER EXPERIENCE</button>
+          <button className="button__middle--small">
+            <FontAwesomeIcon icon={faCaretRight} className='icon'/>
+          </button>
+        </div>
+      )}
     </div>
 
     <div className={`container__middle--wrapper ${hovered === 'left' ? 'shift-right' : ''} ${hovered === 'right' ? 'shift-left' : ''}`}>

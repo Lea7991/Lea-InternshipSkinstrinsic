@@ -5,7 +5,7 @@
   padding-top: 0;
   padding-bottom: 20px;
   width: 100%;
-  max-width: 1920px;
+  max-width: 1366px;
   box-sizing: border-box;
 }
 
@@ -168,3 +168,144 @@
     font-size: 6vw;
   }
 }
+
+
+/* RESPONSIVE */
+
+
+@media (max-width: 1920px) {
+    .page {
+      max-width: 1920px;
+    }
+}
+
+@media (max-width: 960px) {
+  .page {
+    max-width: 960px; 
+  }
+
+  .rectangle__left,
+  .rectangle__right {
+    position: absolute;
+    border: 2px dotted #A0A4AB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    overflow: visible;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+  }
+
+  .rectangle__left {
+    width: 360px;
+    height: 360px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .rectangle__right {
+    width: 450px;
+    height: 450px;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .left__content {
+    display: none;
+  }
+
+  .right__content {
+    display: none
+  }
+
+  .container__middle--wrapper {
+  flex: 1;
+  height: 596px;
+  width: 340px;
+}
+
+.container__middle--title {
+  width: 340px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 200px;
+}
+
+.title {
+  font-weight: 300;
+  font-size: 50px;
+  line-height: 1.1;
+  letter-spacing: -7%;
+  margin: 0;
+}
+
+.shift-left,
+.shift-right {
+  transform: none;
+}
+
+.fade-out {
+  opacity: 1;
+  transition: none;
+}
+
+.text__wrapper {
+    position: absolute;
+    width: 316px;
+    height: 72px;
+    top: 48%;
+    left: 30%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.text{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgb(177, 177, 177);
+}
+
+.button__middle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 20px;
+  padding-left: 30px;
+  border: none;
+  background: none;
+}
+
+.button__middle:hover {
+  transform: scale(1.3) all 300 ease;
+}
+
+.button__middle--small{
+  height: 24px;
+  width: 24px;
+  border: 1px solid black;
+  background-color: white;
+  transform: rotate(45deg);
+  transition: transform 1.2s ease-in-out;
+  cursor: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.text__small--middle {
+  border: none;
+    background-color: white;
+    cursor: inherit;
+    font-weight: 400;
+}
+
+
+}
+
+

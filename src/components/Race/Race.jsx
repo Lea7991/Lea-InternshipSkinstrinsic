@@ -28,20 +28,22 @@ const circumference = 2 * Math.PI * radius;
 const progress = parseFloat(topPercentage);
 const strokeDashoffset = circumference - (progress / 100) * circumference;
 
+
   return (
     <div>
         
         <div className="container__wrapper--middle">
           <div className="result__text">{selectedRace.toUpperCase()}</div>
           <div className="circle__wrapper">
-            <circle className="bg" cx="50" cy="50" r="45" />
+            
             <svg className="circle" viewBox="0 0 100 100">
+              <circle className="bg" cx="50" cy="50" r="45" />
               <circle
                 className="progress"
                 cx="50"
                 cy="50"
                 r={radius}
-                strokeDasharray={circumference}
+                strokeDasharray={`${circumference} ${circumference}`}
                 strokeDashoffset={strokeDashoffset}
                 style={{ transition: 'stroke-dashoffset 0.5s ease' }}
               />

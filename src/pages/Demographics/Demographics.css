@@ -155,7 +155,7 @@
   fill: none;
   stroke: black;
   stroke-width: 1.5; 
-  transition: stroke-dashoffset 0.5s ease;
+  stroke-linecap: round;
 }
 
 .percentage-text {
