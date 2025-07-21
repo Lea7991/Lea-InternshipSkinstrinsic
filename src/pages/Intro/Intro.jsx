@@ -101,7 +101,7 @@ useEffect(() => {
 
             if (!name || !trimmedLocation) {
               alert("Failed: name and location required");
-              return; // stop navigation
+              return; 
             }
 
             setLocation(trimmedLocation);

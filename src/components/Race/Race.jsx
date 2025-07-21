@@ -18,17 +18,17 @@ const Race = ({ raceData, predictedRace, onSelectRace, userRace }) => {
   }
   
   const selectedRace = userRace || predictedRace;
-  const topPercentage = raceData[selectedRace];
+  const topPercentage = parseFloat(raceData[selectedRace] || 0)
   const sortedRaces = Object.entries(raceData).sort(
     (a,b) => parseFloat(b[1]) - parseFloat(a[1])
   );
 
-const radius = 45;
-const circumference = 2 * Math.PI * radius;
-const progress = parseFloat(topPercentage);
-const strokeDashoffset = circumference - (progress / 100) * circumference;
+  const radius = 45;
+  const circumference = (2 * Math.PI * radius);
+  const progress = parseFloat(topPercentage);
+  const strokeDashoffset = circumference - (progress / 100) * circumference;
 
-
+ 
   return (
     <div>
         
@@ -49,7 +49,7 @@ const strokeDashoffset = circumference - (progress / 100) * circumference;
               />
               
             </svg>
-            <div x="50" y="50" className="percentage-text">{topPercentage}%</div>
+            <div className="percentage-text">{topPercentage}%</div>
           </div>
         </div>
 

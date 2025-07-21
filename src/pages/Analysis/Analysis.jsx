@@ -96,7 +96,6 @@ const Analysis = () => {
 
   return (
     <>
-
     <input
         type="file"
         accept="image/*"

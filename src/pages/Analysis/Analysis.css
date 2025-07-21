@@ -2,18 +2,19 @@
   position: relative;
   width: 100%;
   max-width: 1366px;
-  height: 90vh;
-  padding: 20px;
+  height: 100vh;
+  padding: 0;
   box-sizing: border-box;
 }
 
 .container {
   display: flex;
-  width: 100%;
-  height: 100%;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between; 
+  height: 100%;
 }
+  
 
 .header__title {
   position: absolute;
@@ -25,59 +26,63 @@
 
 .page__left,
 .page__right {
-  position: relative;
   width: 50%;
   display: flex;
-  justify-content: center; 
-  align-items: center;     
-  flex-direction: column;  
-  gap: 20px;               
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
 
 .rectangle__left--wrapper,
 .rectangle__right--wrapper {
+  width: 520px;
+  height: 482px;
   position: relative;
-  width: 240px;
-  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rectangle__rotate--wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
   z-index: 1;
+  padding-top: 120px;
+}
+
+.rectangle__one,
+.rectangle__two,
+.rectangle__three {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dotted;
 }
 
 .rectangle__one {
-  width: 300px;
-  height: 300px;
-  border: 2px dotted #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 260px !important;
+  height: 260px !important;
+  border-color: #ccc;
   animation: slowRotate 120s linear infinite;
 }
 
 .rectangle__two {
-  width: 260px;
-  height: 260px;
-  border: 2px dotted rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 210px;
+  height: 210px;
+  border-color: rgba(0, 0, 0, 0.4);
   animation: rotateReverse 180s linear infinite;
 }
 
 .rectangle__three {
-  width: 240px;
-  height: 240px;
-  border: 2px dotted rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-color: rgba(0, 0, 0, 0.2);
   animation: slowRotate 240s linear infinite;
 }
 
@@ -96,9 +101,9 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -65%);
+  transform: translate(-50%, -50%);
   z-index: 2;
-  width: 100px;  
+  width: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -413,4 +418,151 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+@media(max-width: 1920px) {
+  .page{
+    width: 100%;
+    max-width: 1920px;
+  }
+  
+}
+
+@media(max-width: 960px) {
+  .page{
+    width: 100%;
+    max-width: 960px;
+    height: 80vh;
+  }
+
+  .container {
+    flex-direction: column;
+    justify-content: flex-start;  
+    align-items: stretch;         
+    height: auto; 
+    padding: 10px;                
+  }
+
+  .page__left,
+  .page__right {
+    width: 100%;
+    height: auto;              
+    margin-bottom: 20px;
+    padding: 10px;       
+  }
+
+  .page__right {
+    margin-bottom: 0;
+  }
+
+  .rectangle__left--wrapper,
+  .rectangle__right--wrapper {
+    width: 300px;
+    height: 300px;
+  }
+
+  .rectangle__one {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  .rectangle__two {
+    width: 190px !important;
+    height: 190px !important;
+  }
+  .rectangle__three {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .image__wrapper--left,
+  .image__wrapper--right {
+    width: 100px;
+    padding-bottom: 20px;
+  }
+
+  .line__left,
+  .line__right {
+    display: none;
+  }
+
+  .text__left {
+   position: absolute;
+    top: 35%;
+    left: 55%;
+  }
+
+  .text__right {
+    position: absolute;
+    top: 85%;
+    left: 55%;
+  }
+}
+
+@media(max-width: 500px) {
+  .page{
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .container {
+    flex-direction: column;
+    justify-content: flex-start;  
+    align-items: stretch;         
+    height: auto;                 
+  }
+
+  .page__left,
+  .page__right {
+    width: 100%;
+    height: auto;               
+    margin-bottom: 20px;        
+  }
+
+  
+  .page__right {
+    margin-bottom: 0;
+  }
+
+  .rectangle__left--wrapper,
+  .rectangle__right--wrapper {
+    width: 300px;
+    height: 300px;
+  }
+
+  .rectangle__one {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  .rectangle__two {
+    width: 190px !important;
+    height: 190px !important;
+  }
+  .rectangle__three {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .image__wrapper--left,
+  .image__wrapper--right {
+    width: 100px;
+    padding-bottom: 20px;
+  }
+
+  .line__left,
+  .line__right {
+    display: none;
+  }
+
+  .text__left {
+   position: absolute;
+    top: 35%;
+    left: 55%;
+  }
+
+  .text__right {
+    position: absolute;
+    top: 85%;
+    left: 55%;
+  }
+  
 }

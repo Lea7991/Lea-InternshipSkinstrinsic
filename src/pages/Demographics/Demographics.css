@@ -146,17 +146,20 @@
 }
 
 .bg {
-  fill: none;
-  stroke: rgb(232, 230, 230); 
-  stroke-width: 1.5;
+  fill: none !important;
+  stroke: rgb(232, 230, 230) !important; 
+  stroke-width: 1.5 !important;
 }
 
-.progress {
-  fill: none;
-  stroke: black;
-  stroke-width: 1.5; 
-  stroke-linecap: round;
-}
+.progress { 
+  transform: rotate(-90deg) !important;
+  transform-origin: 50% 50% !important;
+  fill: none !important;
+  stroke: black !important; 
+  stroke-width: 1.5 !important;
+  stroke-linecap: round !important; 
+  transition: stroke-dashoffset 0.5s ease !important;
+   }
 
 .percentage-text {
   position: absolute;

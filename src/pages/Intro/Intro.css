@@ -1,10 +1,13 @@
 .page {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: 1366px;
-  height: 90vh;
+  height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .header__title {
@@ -17,30 +20,29 @@
 
 .intro__wrapper {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 762px;
+  height: 762px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
+  margin-top: 260px;
 }
 
 .rectangle__rotate--wrapper {
-  position: absolute;
+  width: 762px !important;
+  height: 762px !important;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -60%);
   pointer-events: none;
 }
 
 
 .rectangle__one {
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   border: 2px dotted #ccc;
   display: flex;
   justify-content: center;
@@ -49,8 +51,8 @@
 }
 
 .rectangle__two {
-  width: 320px;
-  height: 320px;
+  width: 500px;
+  height: 500px;
   border: 2px dotted rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
@@ -60,8 +62,8 @@
 }
 
 .rectangle__three {
-  width: 260px;
-  height: 260px;
+  width: 400px;
+  height: 400px;
   border: 2px dotted rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
@@ -95,7 +97,7 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  transform: translateY(-60%);
+  transform: translateY(-80%);
 }
 
 .input__title {
@@ -118,11 +120,8 @@
 }
 
 
-
-
-    
 .intro__input::placeholder{
-    font-size: 36px;
+    font-size: 40px;
 }
 
 
@@ -177,5 +176,76 @@
   cursor: pointer;
   background-color: white;
   border: none;
+}
+
+/* MAKING IT RESPONSIVE */
+
+@media(max-width: 1920px) {
+  .page {
+    width: 100%;
+    max-width: 1920px;
+
+  }
+}
+
+@media(max-width: 1200px) {
+  .page {
+    width: 100%;
+    max-width: 1200px;
+  }
+}
+
+@media(max-width: 500px) {
+  .page {
+    width: 100%;
+    max-width: 500px;
+    height: 80vh;
+  }
+
+  .intro__wrapper {
+    height: 450px;
+    width: 450px;
+  }
+
+  .rectangle__rotate--wrapper {
+    width: 450px;
+    height: 450px;
+  }
+
+  .input__title {
+    font-size: 10px;
+  }
+
+  .intro__input{
+    width: 200px;
+  }
+
+  .intro__input::placeholder {
+    font-size: 16px;
+  }
+
+  .rectangle__one{
+    width: 300px !important;
+    height: 300px !important;
+    
+  }
+  .rectangle__two{
+    width: 250px !important;
+    height: 250px !important;
+
+  }
+  .rectangle__three{
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .rectangle__small {
+  width: 22px !important;
+  height: 22px !important;
+  }
+
+  .text__small {
+    font-size: 12px !important;
+  }
 }
 
