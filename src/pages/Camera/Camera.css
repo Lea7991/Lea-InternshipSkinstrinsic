@@ -129,15 +129,49 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-color: white;
+  border-color: white !important;
 }
 
 .icon {
-  color: white;
+  color: white !important;
 }
 
 .text__small {
   color: white;
   margin-left: 8px;
   font-size: 14px;
+}
+
+@media (max-width: 1920px) {
+  .page {
+    width: 100%;
+    max-width: 1920px;
+  }
+}
+
+@media (max-width: 500px) {
+  .page {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .text__results {
+    font-size: 12px;
+  }
+
+  .list {
+    font-size: 10px;
+  }
+
+  .camera__container {
+  position: absolute;
+  top: 70%;
+  right: 170px;
+  padding-bottom: 20px;
+  
+}
+
+.camera__text {
+  display: none;
+}
 }

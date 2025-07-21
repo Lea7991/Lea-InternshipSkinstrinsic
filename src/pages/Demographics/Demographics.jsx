@@ -3,7 +3,7 @@ import axios from 'axios';
 import Race from '../../components/Race/Race';
 import Age from '../../components/Age/Age';
 import Sex from '../../components/Sex/Sex';
-import '../Demographics/Demographics.css';
+import '../Demographics/Demographics.css'
 
 const Demographics = () => {
   const [component, setComponent] = useState('race');
