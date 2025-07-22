@@ -135,15 +135,15 @@ const Analysis = () => {
        </div>
       )}
 
-    <div className='page'>
+    <div className='page__analysis'>
       <div className="header__title">TO START ANALYSIS</div>
-      <div className="container">
+      <div className="container__analysis">
         <div className="page__left">
-        <div className="rectangle__left--wrapper">
-          <div className="rectangle__rotate--wrapper">
-            <div className="rectangle__one">
-            <div className="rectangle__two">
-                <div className="rectangle__three">
+        <div className="rectangle__left--wrapper--analysis">
+          <div className="rectangle__rotate--wrapper--analysis">
+            <div className="rectangle__one--analysis">
+            <div className="rectangle__two--analysis">
+                <div className="rectangle__three--analysis">
                 </div>
             </div>
             </div>
@@ -169,11 +169,11 @@ const Analysis = () => {
       )}
 
         <div className="page__right">
-        <div className="rectangle__right--wrapper">
-          <div className="rectangle__rotate--wrapper">
-            <div className="rectangle__one">
-            <div className="rectangle__two">
-                <div className="rectangle__three">
+        <div className="rectangle__right--wrapper--analysis">
+          <div className="rectangle__rotate--wrapper--analysis">
+            <div className="rectangle__one--analysis">
+            <div className="rectangle__two--analysis">
+                <div className="rectangle__three--analysis">
                 </div>
             </div>
             </div>
@@ -197,11 +197,11 @@ const Analysis = () => {
         </div>
       )}
       </div>
-      <button className="button__wrapper--left" onClick={handleBack}>
-          <div className="rectangle__small">
-              <FontAwesomeIcon icon={faCaretLeft} className='icon' />
+      <button className="button__wrapper--left---analysis" onClick={handleBack}>
+          <div className="rectangle__small--analysis">
+              <FontAwesomeIcon icon={faCaretLeft} className='icon--analysis' />
           </div>
-          <div className="text__small">BACK</div>
+          <div className="text__small--analysis">BACK</div>
       </button>
       </div>
       </>

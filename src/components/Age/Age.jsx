@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../pages/Demographics/Demographics.css';
+import ProgressCircle from '../ProgressCircle/ProgressCircle';
 
 const Age = ({ ageData, predictedAge, userAge, onSelectAge }) => {
-  
   const groupAges = (data) => {
     const grouped = {
       '0-9': 0,
@@ -53,28 +53,19 @@ const Age = ({ ageData, predictedAge, userAge, onSelectAge }) => {
 
   const formatAgeLabel = (label) => (label === '70+' ? label : `${label} y.o.`);
 
-  const radius = 45;
-  const circumference = 2 * Math.PI * radius;
-
   return (
     <div>
       <div className="container__wrapper--middle">
         <div className="result__text">{formatAgeLabel(selectedAgeGroup)}</div>
         <div className="circle__wrapper">
-          <svg className="circle" viewBox="0 0 100 100">
-            <circle className="bg" cx="50" cy="50" r={radius} />
-            <circle
-              className="progress"
-              cx="50"
-              cy="50"
-              r={radius}
-              strokeDasharray={circumference}
-              strokeDashoffset={circumference * (1 - selectedConfidence / 100)}
-            />
-          </svg>
-          <div x="50" y="50" className="percentage-text">
-            {selectedConfidence.toFixed(0)}%
-          </div>
+          <ProgressCircle 
+            percentage={selectedConfidence} 
+            radius={200} 
+            strokeWidth={2} 
+            circleColor="black" 
+            bgColor="#eee" 
+            fontSize="20px"
+          />
         </div>
       </div>
 

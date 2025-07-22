@@ -27,19 +27,19 @@ const Home = () => {
 
 
   return (
-    <div className="page">
-      <div className="container">
+    <div className="page__home">
+      <div className="container__home">
 
     <div className="container__left">
       <div className={`rectangle__left ${hovered === 'right' ? 'fade-out' : ''}`}
       onMouseEnter={() => setHovered('left')}
       onMouseLeave={() => setHovered(null)}
       >
-        <div className="left__content">
-          <button className="rectangle__small">
-            <FontAwesomeIcon icon={faCaretLeft} className='icon'/>
+        <div className="left__content--home">
+          <button className="rectangle__small--home">
+            <FontAwesomeIcon icon={faCaretLeft} className='icon__home'/>
           </button>
-          <button className="text__small">DISCOVER A.I.</button>
+          <button className="text__small--home">DISCOVER A.I.</button>
         </div>
       </div>
     </div>
@@ -49,12 +49,12 @@ const Home = () => {
         SKINTRINSIC DEVELOPED AN A.I. THAT CREATES A HIGHLY-PERSONALISED ROUTINE TAILORED TO WHAT YOUR SKIN NEEDS.
       </p>
       {showButton && (
-        <div className="button__middle" onClick={handleClick}>
-          <button className="text__small--middle">ENTER EXPERIENCE</button>
-          <button className="button__middle--small">
-            <FontAwesomeIcon icon={faCaretRight} className='icon'/>
-          </button>
-        </div>
+        <button className="button__middle" onClick={handleClick}>
+          <span className="text__small--middle"  >ENTER EXPERIENCE</span>
+          <span className="button__middle--small"  >
+            <FontAwesomeIcon icon={faCaretRight} className='icon__home'/>
+          </span>
+        </button>
       )}
     </div>
 
@@ -69,11 +69,11 @@ const Home = () => {
       onMouseEnter={() => setHovered('right')}
       onMouseLeave={() => setHovered(null)}
       >
-        <div className="right__content" onClick={handleClick}>
-          <button className="rectangle__small">
-            <FontAwesomeIcon icon={faCaretRight} className='icon'/>
+        <div className="right__content--home" onClick={handleClick}>
+          <button className="rectangle__small--home">
+            <FontAwesomeIcon icon={faCaretRight} className='icon__home'/>
           </button>
-          <button className="text__small">TAKE TEST</button>
+          <button className="text__small--home">TAKE TEST</button>
         </div>
       </div>
     </div>

@@ -1,0 +1,33 @@
+.progress-circle-wrapper {
+  position: relative;
+  display: inline-block; 
+}
+
+.progress-circle-svg {
+  display: block;
+  transform: rotate(-90deg);
+}
+
+.progress-circle-bg {
+  stroke: #eee;
+  fill: none;
+}
+
+.progress-circle-progress {
+  stroke: black;
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 200;
+  user-select: none;
+  pointer-events: none; 
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+}

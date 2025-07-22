@@ -66,11 +66,11 @@ useEffect(() => {
   return (
     <div className='page'>
         <div className="header__title">TO START ANALYSIS</div>
-        <div className="intro__wrapper">
-            <div className="rectangle__rotate--wrapper">
-                <div className="rectangle__one">
-                <div className="rectangle__two">
-                    <div className="rectangle__three">
+        <div className="intro__wrapper--intro">
+            <div className="rectangle__rotate--wrapper---intro">
+                <div className="rectangle__one--intro">
+                <div className="rectangle__two--intro">
+                    <div className="rectangle__three--intro">
                     </div>
                 </div>
                 </div>
@@ -87,15 +87,15 @@ useEffect(() => {
              />
         </div>
         </div> 
-       <button className="button__wrapper--left" onClick={handleClick}>
-            <div className="rectangle__small">
-                <FontAwesomeIcon icon={faCaretLeft} className='icon'/>
+       <button className="button__wrapper--left--intro" onClick={handleClick}>
+            <div className="rectangle__small--intro">
+                <FontAwesomeIcon icon={faCaretLeft} className='icon--intro'/>
             </div>
-            <div className="text__small">BACK</div>
+            <div className="text__small--intro">BACK</div>
         </button>
         {showProceed && (
         <button
-          className="button__wrapper--right"
+          className="button__wrapper--right--intro"
           onClick={() => {
             const trimmedLocation = inputValue.trim();
 
@@ -108,10 +108,10 @@ useEffect(() => {
             navigate('/Analysis');
           }}
             >
-          <div className="rectangle__small">
-              <FontAwesomeIcon icon={faCaretRight} className='icon'/>
+          <div className="rectangle__small--intro">
+              <FontAwesomeIcon icon={faCaretRight} className='icon--intro'/>
           </div>
-          <div className="text__small">PROCEED</div>
+          <div className="text__small--intro">PROCEED</div>
         </button>
         )}
     </div>

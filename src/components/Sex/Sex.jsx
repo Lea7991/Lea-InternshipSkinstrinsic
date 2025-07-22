@@ -1,5 +1,6 @@
 import React from 'react';
 import '../Sex/Sex.css';
+import ProgressCircle from '../ProgressCircle/ProgressCircle';
 
 const Sex = ({ genderData, predictedGender, userSex, onSelectSex }) => {
   if (!genderData || !predictedGender) return null;
@@ -16,32 +17,22 @@ const Sex = ({ genderData, predictedGender, userSex, onSelectSex }) => {
     });
   }
 
-  const radius = 45;
-  const circumference = 2 * Math.PI * radius;
-
   const selectedSex = userSex || predictedGender;
-  const confidenceValue = parseFloat(genderData[selectedSex]);
-  const strokeOffset = circumference * (1 - confidenceValue / 100);
+  const confidenceValue = normalizedData[selectedSex] || 0;
 
   return (
     <div>
       <div className="container__wrapper--middle">
         <div className="result__text">{selectedSex.toUpperCase()}</div>
         <div className="circle__wrapper">
-          <svg className="circle" viewBox="0 0 100 100">
-            <circle className="bg" cx="50" cy="50" r={radius} />
-            <circle
-              className="progress"
-              cx="50"
-              cy="50"
-              r={radius}
-              strokeDasharray={circumference}
-              strokeDashoffset={strokeOffset}
-            />
-          </svg>
-          <div x="50" y="50" className="percentage-text">
-            {confidenceValue.toFixed(0)}%
-          </div>
+          <ProgressCircle 
+            percentage={confidenceValue} 
+            radius={200} 
+            strokeWidth={2} 
+            circleColor="black" 
+            bgColor="#eee" 
+            fontSize="20px"
+          />
         </div>
       </div>
 
@@ -53,12 +44,10 @@ const Sex = ({ genderData, predictedGender, userSex, onSelectSex }) => {
         <div className="main__results--wrapper">
           <ul className="results__list">
             {Object.entries(genderData).map(([label, value]) => (
-              <li 
-              className={`result__wrapper ${
-                  label === selectedSex ? 'highlight' : ''
-                }`}
-              key={label}
-              onClick={() => onSelectSex(label)}
+              <li
+                key={label}
+                className={`result__wrapper ${label === selectedSex ? 'highlight' : ''}`}
+                onClick={() => onSelectSex(label)}
               >
                 <div className="result">{label.toUpperCase()}</div>
                 <div className="percentage">{parseFloat(value).toFixed(0)}%</div>
