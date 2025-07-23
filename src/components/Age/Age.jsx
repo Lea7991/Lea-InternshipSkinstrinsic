@@ -81,7 +81,7 @@ const Age = ({ ageData, predictedAge, userAge, onSelectAge }) => {
           <ul className="results__list">
             {parsedData.map(([ageGroup, confidence]) => (
               <li
-                className="result__wrapper"
+                className={`result__wrapper ${ageGroup === selectedAgeGroup ? 'highlight selected' : ''}`}
                 key={ageGroup}
                 onClick={() => onSelectAge(ageGroup)}
               >

@@ -51,7 +51,7 @@ const radius = useResponsiveRadius();
             {sortedRaces.map(([race, percent]) => (
               <li
                 key={race}
-                className={`result__wrapper ${race === predictedRace ? 'highlight' : ''}`}
+                className={`result__wrapper ${race === (userRace || predictedRace) ? 'highlight selected' : ''}`}
                 onClick={() => onSelectRace(race)}
               >
                 <div className="result">{race.toUpperCase()}</div>

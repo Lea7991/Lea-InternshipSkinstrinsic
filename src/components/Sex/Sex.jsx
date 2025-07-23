@@ -49,7 +49,9 @@ const Sex = ({ genderData, predictedGender, userSex, onSelectSex }) => {
             {Object.entries(genderData).map(([label, value]) => (
               <li
                 key={label}
-                className={`result__wrapper ${label === selectedSex ? 'highlight' : ''}`}
+                className={`result__wrapper 
+                  ${label === userSex ? 'selected' : ''} 
+                  ${label === predictedGender && label !== userSex ? 'highlight' : ''}`}
                 onClick={() => onSelectSex(label)}
               >
                 <div className="result">{label.toUpperCase()}</div>
