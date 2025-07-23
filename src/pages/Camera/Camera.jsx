@@ -71,7 +71,23 @@ const Camera = () => {
 
   return (
     <div className='page'>
-      {loading && <div className="loading-overlay">Uploading...</div>}
+      {loading && (
+        <div className="skeleton__overlay">
+          <div className="rectangle__wrapper---skeleton">
+            <div className="rectangle__rotate--wrapper---skeleton">
+              <div className="rectangle__one--skeleton">
+                <div className="rectangle__two--skeleton">
+                  <div className="rectangle__three--skeleton"></div>
+                </div>
+              </div>
+            </div>
+            <div className="text__wrapper--skeleton">
+              <div className="text--skeleton">LOADING ANALYSIS...</div>
+              <div className="list__wrapper"></div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <video ref={videoRef} autoPlay playsInline className="camera-video" />
       <canvas ref={canvasRef} style={{ display: 'none' }} />

@@ -1,10 +1,15 @@
 import React from 'react'
 import '../../pages/Demographics/Demographics.css'
 import ProgressCircle from '../ProgressCircle/ProgressCircle';
+import useResponsiveRadius from '../../hooks/useResponsiveRadius';
 
 
 const Race = ({ raceData, predictedRace, onSelectRace, userRace, }) => {
+const radius = useResponsiveRadius();
+  
   if (!raceData || !predictedRace) return null;
+
+  
 
   const total = Object.values(raceData).reduce((sum, val) => sum + parseFloat(val), 0);
   const normalizedData = {};
@@ -18,18 +23,21 @@ const Race = ({ raceData, predictedRace, onSelectRace, userRace, }) => {
     });
   }
 
+  
+
   const selectedRace = userRace || predictedRace;
   const topPercentage = parseFloat(raceData[selectedRace] || 0);
   const sortedRaces = Object.entries(raceData).sort(
     (a, b) => parseFloat(b[1]) - parseFloat(a[1])
   );
 
+
   return (
     <div>
       <div className="container__wrapper--middle">
         <div className="result__text">{selectedRace.toUpperCase()}</div>
         <div className="circle__wrapper">
-          <ProgressCircle percentage={topPercentage} radius={200} strokeWidth={2} />
+          <ProgressCircle percentage={topPercentage} radius={radius} strokeWidth={2} />
         </div>
       </div>
 

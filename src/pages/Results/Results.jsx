@@ -29,16 +29,16 @@ const Results = () => {
   }
 
   return (
-    <div className='page'>
+    <div className='page__results'>
       <div className="header__title">A.I. ANALYSIS</div>
-      <p className='header__para'>
+      <p className='header__para--results'>
         A.I. HAS ESTIMATED THE FOLLOWING. <br />
         FIX ESTIMATED INFORMATION IF NEEDED.
       </p>
 
-      <div className="intro__wrapper">
-        <div className="rectangle__wrapper">
-          <div className={`rectangle__one ${showRectangle ? 'visible' : ''}`}></div>
+      <div className="intro__wrapper--results">
+        <div className="rectangle__wrapper--results">
+          <div className={`rectangle__one--results ${showRectangle ? 'visible' : ''}`}></div>
 
           <div
             className="inner__wrapper"
@@ -61,18 +61,18 @@ const Results = () => {
         </div>
       </div>
 
-      <button className="button__wrapper--left" onClick={handleBack}>
-        <div className="rectangle__small">
-          <FontAwesomeIcon icon={faCaretLeft} className='icon' />
+      <button className="button__wrapper--left---results" onClick={handleBack}>
+        <div className="rectangle__small--results">
+          <FontAwesomeIcon icon={faCaretLeft} className='icon--results' />
         </div>
-        <div className="text__small">BACK</div>
+        <div className="text__small--results">BACK</div>
       </button>
 
-      <button className="button__wrapper--right" onClick={handleProceed}>
-        <div className="rectangle__small">
-          <FontAwesomeIcon icon={faCaretRight} className='icon' />
+      <button className="button__wrapper--right---results" onClick={handleProceed}>
+        <div className="rectangle__small--results">
+          <FontAwesomeIcon icon={faCaretRight} className='icon--results' />
         </div>
-        <div className="text__small">PROCEED</div>
+        <div className="text__small--results">GET SUMMARY</div>
       </button>
     </div>
   );

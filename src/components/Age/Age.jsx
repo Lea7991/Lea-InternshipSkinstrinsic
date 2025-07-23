@@ -1,8 +1,11 @@
 import React from 'react';
 import '../../pages/Demographics/Demographics.css';
 import ProgressCircle from '../ProgressCircle/ProgressCircle';
+import useResponsiveRadius from '../../hooks/useResponsiveRadius';
 
 const Age = ({ ageData, predictedAge, userAge, onSelectAge }) => {
+  const radius = useResponsiveRadius();
+
   const groupAges = (data) => {
     const grouped = {
       '0-9': 0,
@@ -60,7 +63,7 @@ const Age = ({ ageData, predictedAge, userAge, onSelectAge }) => {
         <div className="circle__wrapper">
           <ProgressCircle 
             percentage={selectedConfidence} 
-            radius={200} 
+            radius={radius} 
             strokeWidth={2} 
             circleColor="black" 
             bgColor="#eee" 

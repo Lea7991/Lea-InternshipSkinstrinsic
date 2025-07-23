@@ -40,6 +40,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding-left: 60px;
 }
 
 .title {
@@ -149,7 +150,24 @@
 
 
 
+
+
+/* RESPONSIVE */
+
+
+@media (max-width: 1920px) {
+    .page__home {
+      min-width: 1401px;
+      max-width: 1920px;
+    }
+}
+
 @media (max-width: 1440px) {
+
+  .page__home{
+    min-width: 961px;
+    max-width: 1400px;
+  }
   .rectangle__left,
   .rectangle__right {
     width: 480px;
@@ -178,17 +196,10 @@
 }
 
 
-/* RESPONSIVE */
-
-
-@media (max-width: 1920px) {
-    .page {
-      max-width: 1920px;
-    }
-}
 
 @media (max-width: 960px) {
-  .page {
+  .page__home {
+    min-width: 601px;
     max-width: 960px; 
   }
 
@@ -327,9 +338,10 @@
 }
 
 
-@media (max-width: 700px) {
-  .page {
-    max-width: 700px; 
+@media (max-width: 500px) {
+  .page__home {
+    width: 100%;
+    max-width: 500px; 
   }
 
   .container__left,
@@ -356,14 +368,14 @@
   }
 
   .rectangle__left {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 
   .rectangle__right {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     transform: translate(-50%, -50%) rotate(45deg);
   }
 
@@ -379,21 +391,25 @@
   flex: 1;
   height: 596px;
   width: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container__middle--title {
   width: 340px;
   height: 120px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
   padding-bottom: 200px;
+  padding-right: 270px;
 }
 
 .title {
   font-weight: 300;
-  font-size: 40px;
+  font-size: 36px;
   line-height: 1.1;
   letter-spacing: -7%;
   margin: 0;
@@ -410,13 +426,12 @@
 }
 
 .text__wrapper {
-    position: absolute;
+    position: relative;
     width: 316px;
     height: 72px;
-    top: 42%;
-    left: 13%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     
 }
@@ -433,7 +448,6 @@
   align-items: center;
   gap: 12px;
   padding-top: 20px;
-  padding-left: 70px;
   border: none;
   background: none;
   transition: transform 300ms ease;

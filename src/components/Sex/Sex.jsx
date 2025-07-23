@@ -1,8 +1,11 @@
 import React from 'react';
 import '../Sex/Sex.css';
 import ProgressCircle from '../ProgressCircle/ProgressCircle';
+import useResponsiveRadius from '../../hooks/useResponsiveRadius';
 
 const Sex = ({ genderData, predictedGender, userSex, onSelectSex }) => {
+  const radius = useResponsiveRadius();
+
   if (!genderData || !predictedGender) return null;
 
   const total = Object.values(genderData).reduce((sum, val) => sum + parseFloat(val), 0);
@@ -27,7 +30,7 @@ const Sex = ({ genderData, predictedGender, userSex, onSelectSex }) => {
         <div className="circle__wrapper">
           <ProgressCircle 
             percentage={confidenceValue} 
-            radius={200} 
+            radius={radius} 
             strokeWidth={2} 
             circleColor="black" 
             bgColor="#eee" 

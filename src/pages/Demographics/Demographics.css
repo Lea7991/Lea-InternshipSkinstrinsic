@@ -10,9 +10,16 @@
 
 .container__demo {
     width: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
     height: auto;
     position: relative; 
+    display: flex;
+    flex-direction: row;
+}
+
+.layout__wrapper{
+  width: 100%;
+  display: block;
 }
 
 .header__wrapper {
@@ -40,17 +47,9 @@
 .header__para {
     font-size: 12px;
     margin-top: 22px;
-    margin-left: -20px;
 }
 
-.main__results--wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
+
 
 
 /* LEFT PAGE */
@@ -128,14 +127,23 @@
 /* RIGHT PAGE */
 
 .container__wrapper--right {
-  width: 100%;
-  max-width: 280px;
+  width: 400px;
+  max-width: none;
   background-color: rgb(232, 230, 230);
   display: flex;
   flex-direction: column;
   padding: 10px 0;
   box-sizing: border-box;
   min-width: 0;
+}
+
+.main__results--wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .header__results--wrapper{
@@ -193,20 +201,23 @@
 /* BOTTOM OF PAGE */
 
 .middle__text--wrapper {
-    position: absolute;
-    bottom: 20px;
-    left: 500px;
-    font-size: 12px;
-    color: rgb(176, 175, 175);
+  width: 100%;
+  padding: 10px 0; /* Use padding instead of fixed height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: rgb(176, 175, 175);
+  margin-top: 40px; /* Smaller vertical gap */
 }
 
 .button__wrapper--demo {
-  position: absolute;
-  right: 10px; 
-  bottom: 20px;
+  width: 100%;
+  max-width: 1366px;
   display: flex;
+  justify-content: flex-end;
   gap: 16px;
-  padding-left: 40px;
+  padding: 10px 60px; /* Remove excessive vertical padding */
 }
 
 .reset {
@@ -245,6 +256,65 @@
 
 
 
+@media (max-width: 1024px) {
+  .page__demo {
+    width: 100%;
+    max-width: 1024px;
+  }
+
+  .container__wrapper--left {
+    width: 160px;
+  }
+
+  .container__one,
+  .container__two,
+  .container__three {
+    width: 160px;
+    height: 80px;
+  }
+
+  .container__wrapper--middle {
+    width: 500px;
+    left: 200px;
+  }
+
+  .container__wrapper--right {
+    left: 720px;
+    width: 200px;
+  }
+  
+}
+
+@media (max-width: 600px) {
+  .page__demo {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .layout__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .result__text {
+    display: none;
+  }
+
+  .header__title--demo{
+    font-size: 32px;
+    padding-bottom: 8px;
+  }
+
+  .header__para {
+    font-size: 10px;
+    margin-top: 8px;
+    padding-left: 20px;
+  }
+
+  
+}
 
 
 

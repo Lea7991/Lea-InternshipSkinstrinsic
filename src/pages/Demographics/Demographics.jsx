@@ -125,12 +125,12 @@ const Demographics = () => {
   return (
     <div className='page__demo'>
       <div className="container__demo">
+        <div className="layout__wrapper">
         <div className="header__wrapper">
           <div className="header__title--top">A.I. ANALYSIS</div>
           <h1 className='header__title--demo'>DEMOGRAPHICS</h1>
           <p className='header__para'>
-            A.I. HAS ESTIMATED THE FOLLOWING. <br />
-            FIX ESTIMATED INFORMATION IF NEEDED.
+            PREDICTED RACE & AGE <br />
           </p>
         </div>
 
@@ -168,7 +168,9 @@ const Demographics = () => {
 
         {renderComponent()}
 
-        <div className='middle__text--wrapper'>
+        </div>
+      </div>
+      <div className='middle__text--wrapper'>
           <div className="middle__text">
             If A.I. estimate is wrong, select the correct one
           </div>
@@ -178,7 +180,6 @@ const Demographics = () => {
           <button className="reset">RESET</button>
           <button className="confirm">CONFIRM</button>
         </div>
-      </div>
     </div>
   );
 };
