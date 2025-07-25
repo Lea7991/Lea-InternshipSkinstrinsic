@@ -176,14 +176,20 @@
   align-items: center;
   margin-bottom: 8px;
   min-width: 0;
- 
 }
 
-.result__wrapper:hover{
-    cursor: pointer;
-    background-color: black;
-    color: white;
-    width: 100%;
+.result__wrapper:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  width: 100%;
+}
+
+
+.result__wrapper.selected {
+  background-color: black;  
+  color: white;             
+  font-weight: 300;        
 }
 
 .result__wrapper::before {
@@ -197,6 +203,13 @@
   background-color: rgb(232, 230, 230);
   border: 1px solid black;
 }
+
+.result__wrapper.selected::before {
+  background-color: white;  
+  border: 1px solid white;  
+}
+
+
 
 /* BOTTOM OF PAGE */
 

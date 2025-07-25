@@ -1,15 +1,12 @@
-import React from 'react'
-import '../../pages/Demographics/Demographics.css'
+import React from 'react';
+import '../../pages/Demographics/Demographics.css';
 import ProgressCircle from '../ProgressCircle/ProgressCircle';
 import useResponsiveRadius from '../../hooks/useResponsiveRadius';
 
+const Race = ({ raceData, predictedRace, onSelectRace, userRace }) => {
+  const radius = useResponsiveRadius();
 
-const Race = ({ raceData, predictedRace, onSelectRace, userRace, }) => {
-const radius = useResponsiveRadius();
-  
   if (!raceData || !predictedRace) return null;
-
-  
 
   const total = Object.values(raceData).reduce((sum, val) => sum + parseFloat(val), 0);
   const normalizedData = {};
@@ -23,14 +20,11 @@ const radius = useResponsiveRadius();
     });
   }
 
-  
-
   const selectedRace = userRace || predictedRace;
   const topPercentage = parseFloat(raceData[selectedRace] || 0);
   const sortedRaces = Object.entries(raceData).sort(
     (a, b) => parseFloat(b[1]) - parseFloat(a[1])
   );
-
 
   return (
     <div>
@@ -48,16 +42,20 @@ const radius = useResponsiveRadius();
         </div>
         <div className="main__results--wrapper">
           <ul className="results__list">
-            {sortedRaces.map(([race, percent]) => (
-              <li
-                key={race}
-                className={`result__wrapper ${race === (userRace || predictedRace) ? 'highlight selected' : ''}`}
-                onClick={() => onSelectRace(race)}
-              >
-                <div className="result">{race.toUpperCase()}</div>
-                <div className="percentage">{percent}%</div>
-              </li>
-            ))}
+            {sortedRaces.map(([race, percent]) => {
+              const formattedPercent = Number(percent).toFixed(0); 
+
+              return (
+                <li
+                  key={race}
+                  className={`result__wrapper ${race === selectedRace ? 'highlight selected' : ''}`} 
+                  onClick={() => onSelectRace(race)} 
+                >
+                  <div className="result">{race.toUpperCase()}</div>
+                  <div className="percentage">{formattedPercent}%</div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
@@ -66,4 +64,3 @@ const radius = useResponsiveRadius();
 };
 
 export default Race;
-

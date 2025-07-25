@@ -9,7 +9,7 @@ const Demographics = () => {
   const [component, setComponent] = useState('race');
   const [data, setData] = useState(null);
   const [userRace, setUserRace] = useState(null);
-  const [userAge, setUserAge] = useState(null) 
+  const [userAge, setUserAge] = useState(null); 
   const [userSex, setUserSex] = useState(null);
 
   useEffect(() => {
@@ -72,51 +72,36 @@ const Demographics = () => {
   };
 
   const renderComponent = () => {
-    if (!data) return <div className="skeleton__overlay">
-      <div className="rectangle__wrapper---skeleton">
-          <div className="rectangle__rotate--wrapper---skeleton">
-            <div className="rectangle__one--skeleton">
-            <div className="rectangle__two--skeleton">
-                <div className="rectangle__three--skeleton">
-                </div>
-            </div>
-            </div>
-          </div>
-          <div className="text__wrapper--skeleton">
-            <div className="text--skeleton">LOADING DEMOGRAPHICS...</div>
-              </div>
-            </div>
-       
-       </div>;
+    if (!data) return null;
 
     if (component === 'race')
       return (
         <Race 
-        raceData={data.race} 
-        predictedRace={data.predicted.race}
-        userRace={userRace}
-        onSelectRace={setUserRace}
-         />
+          raceData={data.race} 
+          predictedRace={data.predicted.race}
+          userRace={userRace}
+          onSelectRace={setUserRace}
+        />
       );
 
     if (component === 'age')
       return (
         <Age 
-        ageData={data.age} 
-        predictedAge={data.predicted.age}
-        userAge={userAge}
-        onSelectAge={setUserAge}
-         />
+          ageData={data.age} 
+          predictedAge={data.predicted.age}
+          userAge={userAge}
+          onSelectAge={setUserAge}
+        />
       );
 
     if (component === 'sex')
       return (
         <Sex
-         genderData={data.gender} 
-         predictedGender={data.predicted.gender}
-         userSex={userSex}
-         onSelectSex={setUserSex}
-          />
+          genderData={data.gender} 
+          predictedGender={data.predicted.gender}
+          userSex={userSex}
+          onSelectSex={setUserSex}
+        />
       );
 
     return null;
@@ -126,60 +111,60 @@ const Demographics = () => {
     <div className='page__demo'>
       <div className="container__demo">
         <div className="layout__wrapper">
-        <div className="header__wrapper">
-          <div className="header__title--top">A.I. ANALYSIS</div>
-          <h1 className='header__title--demo'>DEMOGRAPHICS</h1>
-          <p className='header__para'>
-            PREDICTED RACE & AGE <br />
-          </p>
-        </div>
+          <div className="header__wrapper">
+            <div className="header__title--top">A.I. ANALYSIS</div>
+            <h1 className='header__title--demo'>DEMOGRAPHICS</h1>
+            <p className='header__para'>
+              PREDICTED RACE & AGE <br />
+            </p>
+          </div>
 
-        <div className="container__wrapper--left">
-          <button
-            className={`container__one ${component === 'race' ? 'selected' : ''}`}
-            onClick={() => setComponent('race')}
-          >
-            <div className="text__results">
-              {data ? (userRace || data.predicted.race).toUpperCase() : '...'}
-            </div>
-            <div className="text__bottom">RACE</div>
-          </button>
+          <div className="container__wrapper--left">
+            <button
+              className={`container__one ${component === 'race' ? 'selected' : ''}`}
+              onClick={() => setComponent('race')}
+            >
+              <div className="text__results">
+                {data ? (userRace || data.predicted.race).toUpperCase() : '...'}
+              </div>
+              <div className="text__bottom">RACE</div>
+            </button>
 
-          <button
-            className={`container__two ${component === 'age' ? 'selected' : ''}`}
-            onClick={() => setComponent('age')}
-          >
-            <div className="text__results">
-              {data ? (userAge || data.predicted.age) : '...'}
-            </div>
-            <div className="text__bottom">AGE</div>
-          </button>
+            <button
+              className={`container__two ${component === 'age' ? 'selected' : ''}`}
+              onClick={() => setComponent('age')}
+            >
+              <div className="text__results">
+                {data ? (userAge || data.predicted.age) : '...'}
+              </div>
+              <div className="text__bottom">AGE</div>
+            </button>
 
-          <button
-            className={`container__three ${component === 'sex' ? 'selected' : ''}`}
-            onClick={() => setComponent('sex')}
-          >
-            <div className="text__results">
-              {data ? (userSex || data.predicted.gender).toUpperCase() : '...'}
-            </div>
-            <div className="text__bottom">SEX</div>
-          </button>
-        </div>
+            <button
+              className={`container__three ${component === 'sex' ? 'selected' : ''}`}
+              onClick={() => setComponent('sex')}
+            >
+              <div className="text__results">
+                {data ? (userSex || data.predicted.gender).toUpperCase() : '...'}
+              </div>
+              <div className="text__bottom">SEX</div>
+            </button>
+          </div>
 
-        {renderComponent()}
+          {renderComponent()}
 
         </div>
       </div>
       <div className='middle__text--wrapper'>
-          <div className="middle__text">
-            If A.I. estimate is wrong, select the correct one
-          </div>
+        <div className="middle__text">
+          If A.I. estimate is wrong, select the correct one
         </div>
+      </div>
 
-        <div className="button__wrapper--demo">
-          <button className="reset">RESET</button>
-          <button className="confirm">CONFIRM</button>
-        </div>
+      <div className="button__wrapper--demo">
+        <button className="reset">RESET</button>
+        <button className="confirm">CONFIRM</button>
+      </div>
     </div>
   );
 };

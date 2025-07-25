@@ -10,6 +10,7 @@ const Sex = ({ genderData, predictedGender, userSex, onSelectSex }) => {
 
   const total = Object.values(genderData).reduce((sum, val) => sum + parseFloat(val), 0);
   const normalizedData = {};
+
   if (total > 0) {
     Object.entries(genderData).forEach(([label, val]) => {
       normalizedData[label] = (parseFloat(val) / total) * 100;
@@ -20,7 +21,11 @@ const Sex = ({ genderData, predictedGender, userSex, onSelectSex }) => {
     });
   }
 
-  const selectedSex = userSex || predictedGender;
+  const highestConfidenceSex = Object.entries(normalizedData).reduce((a, b) => 
+    normalizedData[a[0]] > normalizedData[b[0]] ? a : b
+  )[0];
+
+  const selectedSex = userSex || highestConfidenceSex || predictedGender;
   const confidenceValue = normalizedData[selectedSex] || 0;
 
   return (
@@ -50,8 +55,8 @@ const Sex = ({ genderData, predictedGender, userSex, onSelectSex }) => {
               <li
                 key={label}
                 className={`result__wrapper 
-                  ${label === userSex ? 'selected' : ''} 
-                  ${label === predictedGender && label !== userSex ? 'highlight' : ''}`}
+                  ${label === selectedSex ? 'selected' : ''} 
+                  ${label === predictedGender && label !== selectedSex ? 'highlight' : ''}`}
                 onClick={() => onSelectSex(label)}
               >
                 <div className="result">{label.toUpperCase()}</div>
