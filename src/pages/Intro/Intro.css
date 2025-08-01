@@ -272,6 +272,11 @@
 
 }
 
+.thankyou__message {
+  font-size: 16px;
+  
+}
+
 /* MAKING IT RESPONSIVE */
 
 @media(max-width: 1920px) {

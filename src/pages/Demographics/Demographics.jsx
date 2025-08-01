@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';  
 import Race from '../../components/Race/Race';
 import Age from '../../components/Age/Age';
 import Sex from '../../components/Sex/Sex';
 import '../Demographics/Demographics.css'
 
 const Demographics = () => {
+  const navigate = useNavigate();  
+
   const [component, setComponent] = useState('race');
   const [data, setData] = useState(null);
   const [userRace, setUserRace] = useState(null);
@@ -107,6 +110,22 @@ const Demographics = () => {
     return null;
   };
 
+  
+  const handleReset = () => {
+    setComponent('race');
+    setData(null);
+    setUserRace(null);
+    setUserAge(null);
+    setUserSex(null);
+
+    navigate('/Intro');  
+  };
+
+  
+  const handleConfirm = () => {
+    navigate('/Analysis');
+  };
+
   return (
     <div className='page__demo'>
       <div className="container__demo">
@@ -162,8 +181,8 @@ const Demographics = () => {
       </div>
 
       <div className="button__wrapper--demo">
-        <button className="reset">RESET</button>
-        <button className="confirm">CONFIRM</button>
+        <button className="reset" onClick={handleReset}>RESET</button>
+        <button className="confirm" onClick={handleConfirm}>CONFIRM</button>
       </div>
     </div>
   );

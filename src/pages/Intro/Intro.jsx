@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../Intro/Intro.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,8 @@ const Intro = () => {
   const [showProceed, setShowProceed] = useState(false);
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
-  const [loading, setLoading] = useState(false); // Loading state
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false); 
 
   function handleClick() {
     navigate(`/`);
@@ -33,12 +34,9 @@ const Intro = () => {
         const enteredLocation = inputValue.trim();
         setLocation(enteredLocation);
         setInputValue('');
-
-        // Start loading when submitting data to the API
         setLoading(true);
 
         if (name && enteredLocation) {
-          // Call API to send data
           axios
             .post('https://us-central1-frontend-simplified.cloudfunctions.net/skinstricPhaseOne', {
               name,
@@ -46,16 +44,15 @@ const Intro = () => {
             })
             .then((response) => {
               console.log('Submission successful', response.data);
-
-              // Simulate a loading state of 4 seconds
               setTimeout(() => {
-                setLoading(false); // Stop loading after 4 seconds
-                setShowProceed(true); // Show the proceed button after loading is done
+                setLoading(false);
+                setShowProceed(true);
+                setSubmitted(true); 
               }, 4000);
             })
             .catch((error) => {
               console.error('Error submitting data:', error);
-              setLoading(false); // Stop loading in case of an error
+              setLoading(false);
             });
         }
       }
@@ -63,11 +60,9 @@ const Intro = () => {
   }
 
   const handleProceed = () => {
-    // Ensure both name and location are present before navigating
     if (name.trim() && location.trim()) {
       navigate('/Analysis');
     } else {
-      // If not, display a message or handle accordingly
       console.error('Name or location missing!');
     }
   };
@@ -83,18 +78,26 @@ const Intro = () => {
             </div>
           </div>
         </div>
+
         <div className="input__wrapper">
-          <div className="input__title">CLICK TO TYPE</div>
-          <input
-            type="text"
-            value={inputValue || location}  
-            placeholder={placeholder}
-            className="intro__input"
-            onChange={handleInput}
-            onKeyDown={handleKeyDown}
-          />
+          {!submitted ? (
+            <>
+              <div className="input__title">CLICK TO TYPE</div>
+              <input
+                type="text"
+                value={inputValue}
+                placeholder={placeholder}
+                className="intro__input"
+                onChange={handleInput}
+                onKeyDown={handleKeyDown}
+              />
+            </>
+          ) : (
+            <div className="thankyou__message">Thank you! Proceed for the next step...</div>
+          )}
         </div>
       </div>
+
       <button className="button__wrapper--left--intro" onClick={handleClick}>
         <div className="rectangle__small--intro">
           <FontAwesomeIcon icon={faCaretLeft} className="icon--intro" />
@@ -102,7 +105,6 @@ const Intro = () => {
         <div className="text__small--intro">BACK</div>
       </button>
 
-      {/* Skeleton Loading State */}
       {loading && (
         <div className="skeleton__overlay">
           <div className="rectangle__wrapper---skeleton">
@@ -120,7 +122,6 @@ const Intro = () => {
         </div>
       )}
 
-      {/* Proceed Button */}
       {showProceed && !loading && (
         <button className="button__wrapper--right--intro" onClick={handleProceed}>
           <div className="rectangle__small--intro">
